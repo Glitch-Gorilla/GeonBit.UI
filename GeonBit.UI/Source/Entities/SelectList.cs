@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using GeonBit.UI.Utils;
+using MonoGame.Extended.BitmapFonts;
+using GeonBit.UI.DataTypes;
 
 
 namespace GeonBit.UI.Entities
@@ -134,6 +136,26 @@ namespace GeonBit.UI.Entities
         /// If provided, will not be able to add any more of this number of items.
         /// </summary>
         public int MaxItems = 0;
+
+        /// <summary>
+        /// Disables Styling Effects
+        /// </summary>
+        public bool DisableStyleEfects = false;
+
+        /// <summary>
+        /// Returns the Scrollbar
+        /// </summary>
+        public VerticalScrollbar Scrollbar
+        {
+            get { return _scrollbar; }
+        }
+
+        /// <summary>
+        /// An optional font you can set to override the default fonts.
+        /// NOTE! Only monospace fonts are supported!
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnore]
+        public BitmapFont FontOverride = null;
 
         /// <summary>
         /// Create the select list.
@@ -394,7 +416,7 @@ namespace GeonBit.UI.Entities
             }
 
             // get height of a single paragraph and calculate size from it
-            var height = _valuesList.Count * (_paragraphs[0].GetCharacterActualSize().Y / GlobalScale + _paragraphs[0].SpaceAfter.Y) + Padding.Y * 2;
+            var height = _valuesList.Count * (_paragraphs[0].GetActualDestRect().Y / GlobalScale + _paragraphs[0].SpaceAfter.Y) + Padding.Y * 2;
             Size = new Vector2(Size.X, height);
         }
 
@@ -496,6 +518,18 @@ namespace GeonBit.UI.Entities
                 paragraph.BackgroundColorUseBoxSize = true;
                 paragraph._hiddenInternalEntity = true;
                 paragraph.PropagateEventsTo(this);
+                if (FontOverride != null)
+                {
+                    paragraph.FontOverride = FontOverride;
+                }
+
+                if (DisableStyleEfects)
+                {
+                    paragraph.SetStyleProperty("FillColor", new StyleProperty(Color.White), EntityState.Default);
+                    paragraph.SetStyleProperty("FillColor", new StyleProperty(Color.White), EntityState.MouseHover);
+                    paragraph.SetStyleProperty("FillColor", new StyleProperty(Color.White), EntityState.MouseDown);
+
+                }
                 AddChild(paragraph);
 
                 // call the callback whenever a new paragraph is created
@@ -850,7 +884,15 @@ namespace GeonBit.UI.Entities
                     Paragraph paragraph = _paragraphs[i];
                     paragraph.GetActualDestRect();
                     paragraph.State = EntityState.MouseDown;
-                    paragraph.BackgroundColor = GetActiveStyle("SelectedHighlightColor").asColor;
+
+                    if (DisableStyleEfects)
+                    {
+                        paragraph.BackgroundColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        paragraph.BackgroundColor = GetActiveStyle("SelectedHighlightColor").asColor;
+                    }
                 }
             }
         }
