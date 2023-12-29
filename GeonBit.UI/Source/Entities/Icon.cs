@@ -32,6 +32,10 @@ namespace GeonBit.UI.Entities
         Shield,
         /// <summary>'Armor' Icon.</summary>
         Armor,
+        /// <summary>'Arrow_Down' Icon.</summary>
+        arrow_down,
+        /// <summary>'Arrow_Up' Icon.</summary>
+        arrow_up,
         /// <summary>'Ring' Icon.</summary>
         Ring,
         /// <summary>'RingRuby' Icon.</summary>

@@ -967,6 +967,15 @@ namespace GeonBit.UI.Entities
         }
 
         /// <summary>
+        /// Entity fill color when tabbed
+        /// </summary>
+        public Color TabbedColor { get; set; }
+        /// <summary>
+        /// Entity fill color opacity - this is just a sugarcoat to access the default fill color alpha style property.
+        /// </summary>
+        public bool IsTabbed { get; set; }
+
+        /// <summary>
         /// Return if this entity is currently disabled, due to self or one of the parents / grandparents being disabled.
         /// </summary>
         /// <returns>True if entity is disabled.</returns>
