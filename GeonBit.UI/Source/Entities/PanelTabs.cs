@@ -178,6 +178,7 @@ namespace GeonBit.UI.Entities
             // recalculate the size of the panel containing the internal panels
             float buttonsHeight = GetButtonsHeight(false);
             _panelsPanel.Offset = new Vector2(0, buttonsHeight);
+            _panelsPanel.Size = new Vector2(0, Parent.Size.Y - buttonsHeight);
 
             // adjust buttons size to fix global scaling
             _buttonsPanel.CalcDestRect();
@@ -228,9 +229,10 @@ namespace GeonBit.UI.Entities
         /// <param name="name">Tab name (also what will appear on the panel button).</param>
         /// <param name="panelSkin">Panel skin to use for this panel.</param>
         /// <returns>The new tab we created - contains the panel and the button to switch it.</returns>
-        public TabData AddTab(string name, PanelSkin panelSkin = PanelSkin.None)
+        /// <param name="optionalPanel">Panel to Use Instead of Creating a New One.</param>
+        public TabData AddTab(string name, PanelSkin panelSkin = PanelSkin.None, Panel optionalPanel = null)
         {
-            Panel newPanel = new Panel(Vector2.Zero, panelSkin, Anchor.TopCenter);
+            Panel newPanel = optionalPanel != null ? optionalPanel : new Panel(Vector2.Zero, panelSkin, Anchor.TopCenter);
             Button newButton = new Button(name, ButtonSkin.Default, Anchor.AutoInlineNoBreak, new Vector2(-1, -1));
             newPanel.Identifier = name;
             return AddTab(newPanel, newButton);

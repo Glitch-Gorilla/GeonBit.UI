@@ -113,6 +113,10 @@ namespace GeonBit.UI.Entities
         /// <summary>Position of the older sibling bottom, eg align this entity based on its older sibling, but center on X axis.
         /// Use this property to place entities one after another but keep them aligned to center (especially paragraphs).</summary>
         AutoCenter,
+
+        /// <summary>Position of the older sibling bottom, eg align this entity based on its older sibling, but center on Y axis.
+        /// Use this property to place entities one after another but keep them aligned to the vertical center.</summary>
+        AutoCenterVertical,
     };
 
     /// <summary>
@@ -969,11 +973,85 @@ namespace GeonBit.UI.Entities
         /// <summary>
         /// Entity fill color when tabbed
         /// </summary>
+        [System.Xml.Serialization.XmlIgnore]
         public Color TabbedColor { get; set; }
+
         /// <summary>
         /// Entity fill color opacity - this is just a sugarcoat to access the default fill color alpha style property.
         /// </summary>
+        [System.Xml.Serialization.XmlIgnore]
         public bool IsTabbed { get; set; }
+
+        /// <summary>A Pixel Shader Effect.</summary>
+        [System.Xml.Serialization.XmlIgnore]
+        public Effect PixelEffect;
+
+        /// <summary>Is this entity a palette swap entity?</summary>
+        [System.Xml.Serialization.XmlIgnore]
+        private bool _isPaletteSwap = false;
+
+        /// <summary>public pallete swap access</summary>
+        [System.Xml.Serialization.XmlIgnore]
+        public bool IsPaletteSwap
+        {
+            get
+            {
+                return _isPaletteSwap;
+            }
+            // get if focused
+            set
+            {
+                _isPaletteSwap = value;
+            }
+        }
+
+        /// <summary>This is the Entity to Pair Alignment with </summary>
+        [System.Xml.Serialization.XmlIgnore]
+        private Entity _pairEntity;
+
+        // true if this entity is currently being paired with another entity
+        [System.Xml.Serialization.XmlIgnore]
+        private bool _isPaired;
+
+        /// <summary> Get/Set Entity Pair </summary>
+        [System.Xml.Serialization.XmlIgnore]
+        public Entity PairEntity
+        {
+            get
+            {
+                return _pairEntity;
+            }
+
+            set
+            {
+                if (_pairEntity != value)
+                {
+                    _pairEntity = value;
+                    _isPaired = true;
+                }
+            }
+        }
+
+        /// <summary>Should this Entity Ignore Dragging consideration</summary>
+        [System.Xml.Serialization.XmlIgnore]
+        private bool _ignoreDragging = false;
+
+        /// <summary>
+        /// Public Access of IgnoreDragging variable
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnore]
+        public bool IgnoreDragging
+        {
+            get
+            {
+                return _ignoreDragging;
+            }
+            // get if focused
+            set
+            {
+                _ignoreDragging = value;
+            }
+        }
 
         /// <summary>
         /// Return if this entity is currently disabled, due to self or one of the parents / grandparents being disabled.
@@ -1197,7 +1275,7 @@ namespace GeonBit.UI.Entities
             DrawEntityOutline(spriteBatch);
 
             // draw the entity itself
-            UserInterface.Active.DrawUtils.StartDraw(spriteBatch, _isCurrentlyDisabled);
+            UserInterface.Active.DrawUtils.StartDraw(spriteBatch, _isCurrentlyDisabled, _isPaletteSwap, PixelEffect);
             DrawEntity(spriteBatch, DrawPhase.Base);
             UserInterface.Active.DrawUtils.EndDraw(spriteBatch);
 
@@ -1821,10 +1899,16 @@ namespace GeonBit.UI.Entities
                     ret.X = parent_center_x - ret.Width / 2 + (int)offset.X;
                     ret.Y = parent_center_y - ret.Height / 2 + (int)offset.Y;
                     break;
+
+                case Anchor.AutoCenterVertical:
+                    ret.X = parent_left + (int)offset.X;
+                    ret.Y = parent_center_y - ret.Height / 2 + (int)offset.Y;
+                    break;
             }
 
             // special case for auto anchors
-            if ((anchor == Anchor.Auto || anchor == Anchor.AutoInline || anchor == Anchor.AutoCenter || anchor == Anchor.AutoInlineNoBreak))
+            if ((anchor == Anchor.Auto || anchor == Anchor.AutoInline || anchor == Anchor.AutoCenter ||
+                anchor == Anchor.AutoInlineNoBreak || anchor == Anchor.AutoCenterVertical))
             {
                 // get previous entity before this
                 Entity prevEntity = GetPreviousEntity(true);
@@ -1836,10 +1920,12 @@ namespace GeonBit.UI.Entities
                     prevEntity.UpdateDestinationRectsIfDirty();
 
                     // handle inline align
-                    if (anchor == Anchor.AutoInline || anchor == Anchor.AutoInlineNoBreak)
+                    if (anchor == Anchor.AutoInline || anchor == Anchor.AutoInlineNoBreak || anchor == Anchor.AutoCenterVertical)
                     {
                         ret.X = prevEntity._destRect.Right + (int)(offset.X + prevEntity._scaledSpaceAfter.X + _scaledSpaceBefore.X);
-                        ret.Y = prevEntity._destRect.Y;
+
+                        if (anchor != Anchor.AutoCenterVertical)
+                            ret.Y = prevEntity._destRect.Y;
                     }
 
                     // handle inline align that ran out of width / or auto anchor not inline
@@ -1887,6 +1973,15 @@ namespace GeonBit.UI.Entities
                     if (ret.Right > parent_right) { _dragOffset.X -= ret.Right - parent_right; ; ret.X -= ret.Right - parent_right; }
                     if (ret.Bottom > parent_bottom) { _dragOffset.Y -= ret.Bottom - parent_bottom; ret.Y -= ret.Bottom - parent_bottom; }
                 }
+            }
+
+            if (_isPaired)
+            {
+                ret.X = _pairEntity.GetActualDestRect().X;
+                ret.Y = _pairEntity.GetActualDestRect().Y;
+
+                ret.X += (int)Offset.X;
+                ret.Y += (int)Offset.Y;
             }
 
             // return the newly created rectangle
@@ -1953,6 +2048,34 @@ namespace GeonBit.UI.Entities
             AfterDraw += (Entity entity) => { other.AfterDraw?.Invoke(other); };
             BeforeUpdate += (Entity entity) => { other.BeforeUpdate?.Invoke(other); };
             AfterUpdate += (Entity entity) => { other.AfterUpdate?.Invoke(other); };
+        }
+
+        /// <summary>
+        /// Removes propogation of events.
+        /// </summary>
+        /// <param name="other">Entity to propagate events to.</param>
+        public virtual void RemovePropagateEvents(Entity other)
+        {
+            OnMouseDown -= (Entity entity) => { other.OnMouseDown?.Invoke(other); };
+            OnRightMouseDown -= (Entity entity) => { other.OnRightMouseDown?.Invoke(other); };
+            OnMouseReleased -= (Entity entity) => { other.OnMouseReleased?.Invoke(other); };
+            WhileMouseDown -= (Entity entity) => { other.WhileMouseDown?.Invoke(other); };
+            WhileRightMouseDown -= (Entity entity) => { other.WhileRightMouseDown?.Invoke(other); };
+            WhileMouseHover -= (Entity entity) => { other.WhileMouseHover?.Invoke(other); };
+            WhileMouseHoverOrDown -= (Entity entity) => { other.WhileMouseHoverOrDown?.Invoke(other); };
+            OnRightClick -= (Entity entity) => { other.OnRightClick?.Invoke(other); };
+            OnClick -= (Entity entity) => { other.OnClick?.Invoke(other); };
+            OnValueChange -= (Entity entity) => { other.OnValueChange?.Invoke(other); };
+            OnMouseEnter -= (Entity entity) => { other.OnMouseEnter?.Invoke(other); };
+            OnMouseLeave -= (Entity entity) => { other.OnMouseLeave?.Invoke(other); };
+            OnMouseWheelScroll -= (Entity entity) => { other.OnMouseWheelScroll?.Invoke(other); };
+            OnStartDrag -= (Entity entity) => { other.OnStartDrag?.Invoke(other); };
+            OnStopDrag -= (Entity entity) => { other.OnStopDrag?.Invoke(other); };
+            WhileDragging -= (Entity entity) => { other.WhileDragging?.Invoke(other); };
+            BeforeDraw -= (Entity entity) => { other.BeforeDraw?.Invoke(other); };
+            AfterDraw -= (Entity entity) => { other.AfterDraw?.Invoke(other); };
+            BeforeUpdate -= (Entity entity) => { other.BeforeUpdate?.Invoke(other); };
+            AfterUpdate -= (Entity entity) => { other.AfterUpdate?.Invoke(other); };
         }
 
         /// <summary>
@@ -2454,7 +2577,8 @@ namespace GeonBit.UI.Entities
             // check dragging after children so that the most nested entity gets priority
             if ((_draggable || IsNaturallyInteractable()) && dragTargetEntity == null && _isMouseOver && MouseInput.MouseButtonPressed(MouseButton.Left))
             {
-                dragTargetEntity = this;
+                if (!IgnoreDragging)
+                    dragTargetEntity = this;
             }
 
             // STEP 3: CALL EVENTS

@@ -168,6 +168,20 @@ namespace GeonBit.UI.Entities
             set { if (_addHyphenWhenBreakWord != value) { _addHyphenWhenBreakWord = value; MarkAsDirty(); } }
         }
 
+        /// <summary>
+        /// Entity you would like to align your paragraph with
+        /// </summary>
+        protected Entity _alignWith;
+
+        /// <summary>
+        /// If true and a long word is broken due to word wrap, will add hyphen at the breaking point.
+        /// </summary>
+        public Entity AlignWith
+        {
+            get { return _alignWith; }
+            set { if (_alignWith != value) { _alignWith = value; MarkAsDirty(); } }
+        }
+
         /// <summary>Base font size. Change this property to affect the size of all paragraphs and other text entities.</summary>
         public static float BaseSize { get; set; } = 1f;
 
@@ -386,6 +400,12 @@ namespace GeonBit.UI.Entities
         }
 
         /// <summary>
+        /// Should we align text to vertical - this is just a sugarcoat to access the default force-align-to-center style property.
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnore]
+        public bool AlignToVerticalCenter;
+
+        /// <summary>
         /// Get the currently active font for this paragraph.
         /// </summary>
         /// <returns>Current font.</returns>
@@ -515,6 +535,20 @@ namespace GeonBit.UI.Entities
             {
                 _fontOrigin.X = size.X / 2;
                 _position.X = _destRect.X + _destRect.Width / 2;
+            }
+
+            // force vertcial ceneter align
+            if (AlignToVerticalCenter && !alreadyCentered)
+            {
+                _fontOrigin.Y = size.Y / 2;
+                _position.Y = _destRect.Y + _destRect.Height / 2;
+
+            }
+
+            if (AlignWith != null)
+            {
+                //_fontOrigin.Y += (AlignWith.Size.Y / 2);
+                _position.Y += (AlignWith.Size.Y / 2);
             }
 
             // set actual height

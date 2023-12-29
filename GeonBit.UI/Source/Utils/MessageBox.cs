@@ -9,6 +9,7 @@
 using GeonBit.UI.Entities;
 using GeonBit.UI.Entities.TextValidators;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -150,8 +151,10 @@ namespace GeonBit.UI.Utils
         /// <param name="size">Alternative size to use.</param>
         /// <param name="onDone">Optional callback to call when this msgbox closes.</param>
         /// <param name="parent">Parent to add message box to (if not defined will use root)</param>
+        /// <param name="customTexture">Optional custom texture to apply to the Message Box.</param>
+        /// <param name="frameScale">Optional frame width scaling to accompany the optional texture Default(0.3f).</param>        
         /// <returns>Message box handle.</returns>
-        public static MessageBoxHandle ShowMsgBox(string header, string text, MsgBoxOption[] options, Entity[] extraEntities = null, Vector2? size = null, Action onDone = null, Entity parent = null)
+        public static MessageBoxHandle ShowMsgBox(string header, string text, MsgBoxOption[] options, Entity[] extraEntities = null, Vector2? size = null, Action onDone = null, Entity parent = null, Texture2D customTexture = null, Vector2? frameScale = null)
         {
             // object to return
             MessageBoxHandle ret = new MessageBoxHandle();
@@ -160,6 +163,15 @@ namespace GeonBit.UI.Utils
             size = size ?? new Vector2(500, -1);
             var panel = new Panel(size.Value);
             ret.Panel = panel;
+
+            if (customTexture != null)
+            {
+                if (frameScale == null)
+                    frameScale = new Vector2(0.3f, 0.3f);
+
+                panel.SetCustomSkin(customTexture, frameScale);
+            }
+
             panel.AddChild(new Header(header));
             panel.AddChild(new HorizontalLine());
             panel.AddChild(new RichParagraph(text));
@@ -251,13 +263,15 @@ namespace GeonBit.UI.Utils
         /// <param name="size">Message box size (if not provided will use default).</param>
         /// <param name="extraEntities">Optional array of entities to add to msg box under the text and above the buttons.</param>
         /// <param name="onDone">Optional callback to call when this msgbox closes.</param>
+        /// <param name="customTexture">Optional custom texture to apply to the Message Box.</param>
+        /// <param name="customFrameScale">Optional custom frame width scaling to accompany the optional texture Default(0.2f).</param>
         /// <returns>Message box handle.</returns>
-        public static MessageBoxHandle ShowMsgBox(string header, string text, string closeButtonTxt = null, Vector2? size = null, Entity[] extraEntities = null, Action onDone = null)
+        public static MessageBoxHandle ShowMsgBox(string header, string text, string closeButtonTxt = null, Vector2? size = null, Entity[] extraEntities = null, Action onDone = null, Texture2D customTexture = null, Vector2? customFrameScale = null)
         {
             return ShowMsgBox(header, text, new MsgBoxOption[]
             {
                 new MsgBoxOption(closeButtonTxt ?? DefaultOkButtonText, null)
-            }, size: size ?? DefaultMsgBoxSize, extraEntities: extraEntities, onDone: onDone);
+            }, size: size ?? DefaultMsgBoxSize, extraEntities: extraEntities, onDone: onDone, customTexture: customTexture, frameScale: customFrameScale);
         }
 
         /// <summary>

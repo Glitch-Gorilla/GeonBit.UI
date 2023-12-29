@@ -540,13 +540,21 @@ namespace GeonBit.UI
         /// </summary>
         /// <param name="spriteBatch">SpriteBatch to draw on.</param>
         /// <param name="isDisabled">If true, will use the greyscale 'disabled' effect.</param>
-        public virtual void StartDraw(SpriteBatch spriteBatch, bool isDisabled)
+        /// <param name="isPaletteSwap">If true, will use the 'palette swap effect.</param>
+        /// <param name="pixelShader">The pixel shader to use for the swap.</param> 
+        public virtual void StartDraw(SpriteBatch spriteBatch, bool isDisabled, bool isPaletteSwap = false, Effect pixelShader = null)
         {
-            // start drawing
-            spriteBatch.Begin(SpriteSortMode.Deferred, UserInterface.Active.BlendState, UserInterface.Active.SamplerState,
+            if (isPaletteSwap && pixelShader != null)
+            {
+                spriteBatch.Begin(SpriteSortMode.Immediate, effect: pixelShader);
+            }
+            else
+            {
+                // start drawing
+                spriteBatch.Begin(SpriteSortMode.Deferred, UserInterface.Active.BlendState, UserInterface.Active.SamplerState,
                 DepthStencilState.None, RasterizerState.CullCounterClockwise,
                 isDisabled ? Resources.Instance.DisabledEffect : null);
-
+            }
             // update drawing target
             UpdateRenderTarget(spriteBatch);
         }
