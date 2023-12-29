@@ -79,7 +79,7 @@ namespace GeonBit.UI.Entities
         /// <summary>
         /// Icons offset from text.
         /// </summary>
-        public static int IconsOffsetX = 10;
+        public static int IconsOffsetX = 0;
 
         /// <summary>
         /// If true and an item in the list is too long for its width, the list will cut its value to fit width.

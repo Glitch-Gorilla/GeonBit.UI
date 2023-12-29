@@ -10,6 +10,7 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\..\MonoGame.Extended\src\cs\MonoGame.Extended.Content.Pipeline\bin\net6.0\MonoGame.Extended.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -259,26 +260,128 @@
 /processorParam:DebugMode=Auto
 /build:GeonBit.UI/Themes/editor/effects/silhouette.fx
 
-#begin GeonBit.UI/Themes/editor/fonts/Bold.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/editor/fonts/Bold_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/editor/fonts/Bold.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Bold_0.png
 
-#begin GeonBit.UI/Themes/editor/fonts/Italic.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/editor/fonts/Bold_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/editor/fonts/Italic.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Bold_1.png
 
-#begin GeonBit.UI/Themes/editor/fonts/Regular.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/editor/fonts/Bold_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/editor/fonts/Regular.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Bold_2.png
+
+#begin GeonBit.UI/Themes/editor/fonts/Bold.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/editor/fonts/Bold.fnt
+
+#begin GeonBit.UI/Themes/editor/fonts/Italic_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Italic_0.png
+
+#begin GeonBit.UI/Themes/editor/fonts/Italic_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Italic_1.png
+
+#begin GeonBit.UI/Themes/editor/fonts/Italic_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Italic_2.png
+
+#begin GeonBit.UI/Themes/editor/fonts/Italic.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/editor/fonts/Italic.fnt
+
+#begin GeonBit.UI/Themes/editor/fonts/Regular_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Regular_0.png
+
+#begin GeonBit.UI/Themes/editor/fonts/Regular_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Regular_1.png
+
+#begin GeonBit.UI/Themes/editor/fonts/Regular_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/fonts/Regular_2.png
+
+#begin GeonBit.UI/Themes/editor/fonts/Regular.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/editor/fonts/Regular.fnt
 
 #begin GeonBit.UI/Themes/editor/styles/Button-Default.xml
 /copy:GeonBit.UI/Themes/editor/styles/Button-Default.xml
@@ -1693,26 +1796,128 @@
 /processorParam:DebugMode=Auto
 /build:GeonBit.UI/Themes/hd/effects/silhouette.fx
 
-#begin GeonBit.UI/Themes/hd/fonts/Bold.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/hd/fonts/Bold_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/hd/fonts/Bold.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Bold_0.png
 
-#begin GeonBit.UI/Themes/hd/fonts/Italic.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/hd/fonts/Bold_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/hd/fonts/Italic.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Bold_1.png
 
-#begin GeonBit.UI/Themes/hd/fonts/Regular.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/hd/fonts/Bold_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/hd/fonts/Regular.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Bold_2.png
+
+#begin GeonBit.UI/Themes/hd/fonts/Bold.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/hd/fonts/Bold.fnt
+
+#begin GeonBit.UI/Themes/hd/fonts/Italic_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Italic_0.png
+
+#begin GeonBit.UI/Themes/hd/fonts/Italic_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Italic_1.png
+
+#begin GeonBit.UI/Themes/hd/fonts/Italic_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Italic_2.png
+
+#begin GeonBit.UI/Themes/hd/fonts/Italic.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/hd/fonts/Italic.fnt
+
+#begin GeonBit.UI/Themes/hd/fonts/Regular_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Regular_0.png
+
+#begin GeonBit.UI/Themes/hd/fonts/Regular_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Regular_1.png
+
+#begin GeonBit.UI/Themes/hd/fonts/Regular_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/fonts/Regular_2.png
+
+#begin GeonBit.UI/Themes/hd/fonts/Regular.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/hd/fonts/Regular.fnt
 
 #begin GeonBit.UI/Themes/hd/styles/Button-Default.xml
 /copy:GeonBit.UI/Themes/hd/styles/Button-Default.xml
@@ -3127,26 +3332,128 @@
 /processorParam:DebugMode=Auto
 /build:GeonBit.UI/Themes/lowres/effects/silhouette.fx
 
-#begin GeonBit.UI/Themes/lowres/fonts/Bold.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/lowres/fonts/Bold_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/lowres/fonts/Bold.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Bold_0.png
 
-#begin GeonBit.UI/Themes/lowres/fonts/Italic.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/lowres/fonts/Bold_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/lowres/fonts/Italic.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Bold_1.png
 
-#begin GeonBit.UI/Themes/lowres/fonts/Regular.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
+#begin GeonBit.UI/Themes/lowres/fonts/Bold_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GeonBit.UI/Themes/lowres/fonts/Regular.spritefont
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Bold_2.png
+
+#begin GeonBit.UI/Themes/lowres/fonts/Bold.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/lowres/fonts/Bold.fnt
+
+#begin GeonBit.UI/Themes/lowres/fonts/Italic_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Italic_0.png
+
+#begin GeonBit.UI/Themes/lowres/fonts/Italic_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Italic_1.png
+
+#begin GeonBit.UI/Themes/lowres/fonts/Italic_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Italic_2.png
+
+#begin GeonBit.UI/Themes/lowres/fonts/Italic.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/lowres/fonts/Italic.fnt
+
+#begin GeonBit.UI/Themes/lowres/fonts/Regular_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Regular_0.png
+
+#begin GeonBit.UI/Themes/lowres/fonts/Regular_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Regular_1.png
+
+#begin GeonBit.UI/Themes/lowres/fonts/Regular_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/fonts/Regular_2.png
+
+#begin GeonBit.UI/Themes/lowres/fonts/Regular.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/build:GeonBit.UI/Themes/lowres/fonts/Regular.fnt
 
 #begin GeonBit.UI/Themes/lowres/styles/Button-Default.xml
 /copy:GeonBit.UI/Themes/lowres/styles/Button-Default.xml

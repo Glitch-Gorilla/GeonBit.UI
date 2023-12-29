@@ -10,6 +10,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using MonoGame.Extended.BitmapFonts;
 
 namespace GeonBit.UI.Entities
 {
@@ -356,7 +357,7 @@ namespace GeonBit.UI.Entities
                 int iTextIndex = 0;
                 Color currColor = Color.White;
                 Color currOutlineColor = Color.Black;
-                SpriteFont currFont = null;
+                BitmapFont currFont = null;
                 Vector2 characterSize = GetCharacterActualSize();
                 Vector2 currPosition = new Vector2(_position.X - characterSize.X, _position.Y);
                 int currOutlineWidth = 0;
@@ -413,7 +414,7 @@ namespace GeonBit.UI.Entities
                     if (currCharacter == '\n')
                     {
                         currPosition.X = _position.X - characterSize.X;
-                        currPosition.Y += currFont.LineSpacing * _actualScale;
+                        currPosition.Y += currFont.LineHeight * _actualScale;
                     }
                     else
                     {

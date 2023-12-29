@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
 using System.IO;
+using MonoGame.Extended.BitmapFonts;
 
 namespace GeonBit.UI
 {
@@ -266,7 +267,7 @@ namespace GeonBit.UI
         public Texture2D ArrowUp;
 
         /// <summary>Default font types.</summary>
-        public SpriteFont[] Fonts;
+        public BitmapFont[] Fonts;
 
         /// <summary>Effect for disabled entities (greyscale).</summary>
         public Effect DisabledEffect;
@@ -354,10 +355,10 @@ namespace GeonBit.UI
             }
 
             // load fonts
-            Fonts = new SpriteFont[Enum.GetValues(typeof(FontStyle)).Length];
+            Fonts = new BitmapFont[Enum.GetValues(typeof(FontStyle)).Length];
             foreach (FontStyle style in Enum.GetValues(typeof(FontStyle)))
             {
-                Fonts[(int)style] = content.Load<SpriteFont>(_root + "fonts/" + style.ToString());
+                Fonts[(int)style] = content.Load<BitmapFont>(_root + "fonts/" + style.ToString());
             }
 
             // load buttons metadata

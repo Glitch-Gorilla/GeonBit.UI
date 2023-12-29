@@ -17,6 +17,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using GeonBit.UI.DataTypes;
 using System.Text;
+using MonoGame.Extended.BitmapFonts;
 
 namespace GeonBit.UI.Entities
 {
@@ -80,7 +81,7 @@ namespace GeonBit.UI.Entities
         /// NOTE! Only monospace fonts are supported!
         /// </summary>
         [System.Xml.Serialization.XmlIgnore]
-        public SpriteFont FontOverride = null;
+        public BitmapFont FontOverride = null;
 
         // the size of a single space character with current font.
         private Vector2 SingleCharacterSize;
@@ -126,7 +127,7 @@ namespace GeonBit.UI.Entities
         /// <summary>
         /// Current font used.
         /// </summary>
-        protected SpriteFont _currFont;
+        protected BitmapFont _currFont;
         
         /// <summary>
         /// Calculated, final text scale.
@@ -269,7 +270,7 @@ namespace GeonBit.UI.Entities
         /// <param name="maxLineWidth">Max line width to wrap.</param>
         /// <param name="fontSize">Font scale (scale you are about to use when drawing the text).</param>
         /// <returns>Text that is wrapped to fit the given length (by adding line breaks at the right places).</returns>
-        public string WrapText(SpriteFont font, string text, float maxLineWidth, float fontSize)
+        public string WrapText(BitmapFont font, string text, float maxLineWidth, float fontSize)
         {
             // invalid width (can happen during init steps - skip
             if (maxLineWidth <= 0) { return text; }
@@ -307,7 +308,7 @@ namespace GeonBit.UI.Entities
 
                 // get current word and its width
                 string word = words[i];
-                int wordWidth = (int)((font.MeasureString(word).X + SingleCharacterSize.X) * fontSize);
+                int wordWidth = (int)((font.MeasureString(word).Width + SingleCharacterSize.X) * fontSize);
 
                 // special case: word itself is longer than line width
                 if (BreakWordsIfMust && wordWidth >= maxLineWidth && word.Length >= 4)
@@ -317,7 +318,7 @@ namespace GeonBit.UI.Entities
                     int currWordWidth = (int)(SingleCharacterSize.X * fontSize);
                     foreach (char c in word)
                     {
-                        currWordWidth += (int)(font.MeasureString(c.ToString()).X * fontSize);
+                        currWordWidth += (int)(font.MeasureString(c.ToString()).Width * fontSize);
                         if (currWordWidth >= maxLineWidth)
                         {
                             break;
@@ -409,7 +410,7 @@ namespace GeonBit.UI.Entities
         /// Get the currently active font for this paragraph.
         /// </summary>
         /// <returns>Current font.</returns>
-        protected SpriteFont GetCurrFont()
+        protected BitmapFont GetCurrFont()
         {
             return FontOverride ?? Resources.Instance.Fonts[(int)TextStyle];
         }
@@ -432,7 +433,7 @@ namespace GeonBit.UI.Entities
         /// </summary>
         private void UpdateFontPropertiesIfNeeded()
         {
-            SpriteFont font = GetCurrFont();
+            BitmapFont font = GetCurrFont();
             if (font != _currFont)
             {
                 // mark as dirty so we'll recalculate positions and line breaks
@@ -443,7 +444,7 @@ namespace GeonBit.UI.Entities
                 SingleCharacterSize = _currFont.MeasureString(" ");
 
                 // sanity test
-                if ((SingleCharacterSize.X * 2) != _currFont.MeasureString("!.").X)
+                if ((SingleCharacterSize.X * 2) != _currFont.MeasureString("!.").Width)
                 {
                     throw new Exceptions.InvalidValueException("Cannot use non-monospace fonts!");
                 }
@@ -663,7 +664,7 @@ namespace GeonBit.UI.Entities
         /// <param name="position">Text position.</param>
         /// <param name="outlineColor">Outline color.</param>
         /// <param name="origin">Text origin.</param>
-        protected void DrawTextOutline(SpriteBatch spriteBatch, string text, int outlineWidth, SpriteFont font, float scale, Vector2 position, Color outlineColor, Vector2 origin)
+        protected void DrawTextOutline(SpriteBatch spriteBatch, string text, int outlineWidth, BitmapFont font, float scale, Vector2 position, Color outlineColor, Vector2 origin)
         {
             // for not-too-thick outline we render just two corners
             if (outlineWidth <= MaxOutlineWidthToOptimize)
