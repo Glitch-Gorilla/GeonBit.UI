@@ -125,6 +125,11 @@ namespace GeonBit.UI.Entities
         protected string _processedText;
 
         /// <summary>
+        /// The Actual Size of the Processed Text (w/ Word Wrap)
+        /// </summary>
+        public Vector2 ProcessedSize;
+
+        /// <summary>
         /// Current font used.
         /// </summary>
         protected BitmapFont _currFont;
@@ -486,7 +491,10 @@ namespace GeonBit.UI.Entities
             // so we just update _size every frame and the text alignemtn (left, right, center..) fix itself by the destination rect.
             _fontOrigin = Vector2.Zero;
             _position = new Vector2(_destRect.X, _destRect.Y);
+
+            var strippedText = _processedText.Replace("\n", "");
             Vector2 size = _currFont.MeasureString(_processedText);
+            ProcessedSize = size;
 
             // set position and origin based on anchor.
             // note: no top-left here because thats the default set above.
@@ -620,7 +628,15 @@ namespace GeonBit.UI.Entities
                 rect.Y += BackgroundColorOffset.Y;
 
                 // draw background color
-                spriteBatch.Draw(Resources.Instance.WhiteTexture, rect, backColor);
+                if(backColor == Color.Transparent)
+                {
+                    spriteBatch.Draw(Resources.Instance.TransparentTexture, rect, backColor);
+                }
+                else
+                {
+                    spriteBatch.Draw(Resources.Instance.WhiteTexture, rect, backColor);
+                }
+
             }
 
             // draw outilnes

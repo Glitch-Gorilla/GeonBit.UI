@@ -227,27 +227,6 @@
 /processorParam:TextureFormat=Color
 /build:Example/warrior.png
 
-#begin Fonts/AnonymousPro-Bold.ttf
-/copy:Fonts/AnonymousPro-Bold.ttf
-
-#begin Fonts/AnonymousPro-Italic.ttf
-/copy:Fonts/AnonymousPro-Italic.ttf
-
-#begin Fonts/AnonymousPro-Regular.ttf
-/copy:Fonts/AnonymousPro-Regular.ttf
-
-#begin Fonts/Bitstream Vera Sans Mono Bold Oblique.ttf
-/copy:Fonts/Bitstream Vera Sans Mono Bold Oblique.ttf
-
-#begin Fonts/Bitstream Vera Sans Mono Bold.ttf
-/copy:Fonts/Bitstream Vera Sans Mono Bold.ttf
-
-#begin Fonts/Bitstream Vera Sans Mono Oblique.ttf
-/copy:Fonts/Bitstream Vera Sans Mono Oblique.ttf
-
-#begin Fonts/Bitstream Vera Sans Mono Roman.ttf
-/copy:Fonts/Bitstream Vera Sans Mono Roman.ttf
-
 #begin GeonBit.UI/Themes/editor/effects/disabled.fx
 /importer:EffectImporter
 /processor:EffectProcessor
@@ -1768,6 +1747,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:GeonBit.UI/Themes/editor/textures/slider_fancy.png
+
+#begin GeonBit.UI/Themes/editor/textures/transparent_texture.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/editor/textures/transparent_texture.png
 
 #begin GeonBit.UI/Themes/editor/textures/white_texture.png
 /importer:TextureImporter
@@ -3304,6 +3295,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:GeonBit.UI/Themes/hd/textures/slider_fancy.png
+
+#begin GeonBit.UI/Themes/hd/textures/transparent_texture.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/hd/textures/transparent_texture.png
 
 #begin GeonBit.UI/Themes/hd/textures/white_texture.png
 /importer:TextureImporter
@@ -4852,6 +4855,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:GeonBit.UI/Themes/lowres/textures/slider_fancy.png
+
+#begin GeonBit.UI/Themes/lowres/textures/transparent_texture.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GeonBit.UI/Themes/lowres/textures/transparent_texture.png
 
 #begin GeonBit.UI/Themes/lowres/textures/white_texture.png
 /importer:TextureImporter

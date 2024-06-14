@@ -200,6 +200,9 @@ namespace GeonBit.UI
         /// <summary>Just a plain white texture, used internally.</summary>
         public Texture2D WhiteTexture;
 
+        /// <summary>Just a plain Transparent texture, used internally.</summary>
+        public Texture2D TransparentTexture;
+
         /// <summary>Cursor textures.</summary>
         public TexturesGetter<CursorType> Cursors = new TexturesGetter<CursorType>("textures/cursor_");
 
@@ -297,6 +300,7 @@ namespace GeonBit.UI
             // set Texture2D fields
             HorizontalLineTexture = _content.Load<Texture2D>(_root + "textures/horizontal_line");
             WhiteTexture = _content.Load<Texture2D>(_root + "textures/white_texture");
+            TransparentTexture = _content.Load<Texture2D>(_root + "textures/transparent_texture");
             IconBackgroundTexture = _content.Load<Texture2D>(_root + "textures/icons/background");
             VerticalScrollbarTexture = _content.Load<Texture2D>(_root + "textures/scrollbar");
             VerticalScrollbarMarkTexture = _content.Load<Texture2D>(_root + "textures/scrollbar_mark");

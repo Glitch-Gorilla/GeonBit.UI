@@ -101,6 +101,26 @@ namespace GeonBit.UI.Animators
         }
 
         /// <summary>
+        /// Complete
+        /// </summary>
+        public void Complete()
+        {   
+            // nothing to type? don't do anything
+            if (_text == null)
+            {
+                return;
+            }
+
+            // finished animation? skip
+            if (IsDone)
+            {
+                return;
+            }
+
+            _currPosition = _text.Length;
+            ((Entities.Paragraph)(TargetEntity)).Text = _text.Substring(0, _currPosition);
+        }
+        /// <summary>
         /// Did this animator finish?
         /// </summary>
         public override bool IsDone

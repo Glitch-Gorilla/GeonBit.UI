@@ -9,9 +9,15 @@
   <SpaceAfter xsi:nil="true" />
   <ShadowScale xsi:nil="true" />
   <DefaultSize xsi:nil="true" />
-  <Scale xsi:nil="true" />
+  <Scale>1.0</Scale>
   <FillColor xsi:nil="true" />
-  <OutlineColor xsi:nil="true" />
-  <OutlineWidth xsi:nil="true" />
+  <OutlineColor>
+    <B>0</B>
+    <G>0</G>
+    <R>0</R>
+    <A>255</A>
+    <PackedValue>4278190080</PackedValue>
+  </OutlineColor>
+  <OutlineWidth>2</OutlineWidth>
   <ForceAlignCenter xsi:nil="true" />
 </DefaultStyles>
