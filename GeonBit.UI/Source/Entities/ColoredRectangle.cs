@@ -125,7 +125,7 @@ namespace GeonBit.UI.Entities
 			}
 
             // get fill color
-            Color fill = FillColor;
+            Color fill = UserInterface.Active.DrawUtils.FixColorOpacity(FillColor);
 
             // draw the rectangle
             spriteBatch.Draw(Resources.Instance.WhiteTexture, _destRect, fill);
